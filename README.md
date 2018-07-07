@@ -1,0 +1,2 @@
+# gametheory_python
+Regret MatchingとCounterfactual Regret Minimizationを用いたゲームの近似解を求めるアルゴリズム
