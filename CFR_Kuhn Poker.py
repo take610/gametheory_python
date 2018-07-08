@@ -3,7 +3,6 @@
 
 # In[91]:
 
-
 import random 
 import numpy as np
 import pandas as pd
@@ -56,13 +55,21 @@ class KuhnPoker:
         if hist in self.term_list:
             return self.utility(hands,hist)
         if hist == self.nonterm_list[0]:#はじめ
-            return  self.utility(hands,self.term_list[0])*self.strategy(hands[0],hist)[1]*self.strategy(hands[1],["b"])[0]                   +self.utility(hands,self.term_list[1])*self.strategy(hands[0],hist)[1]*self.strategy(hands[1],["b"])[1]                   +self.utility(hands,self.term_list[2])*self.strategy(hands[0],hist)[0]*self.strategy(hands[1],["p"])[1]*self.strategy(hands[0],["p","b"])[0]                   +self.utility(hands,self.term_list[3])*self.strategy(hands[0],hist)[0]*self.strategy(hands[1],["p"])[1]*self.strategy(hands[0],["p","b"])[1]                   +self.utility(hands,self.term_list[4])*self.strategy(hands[0],hist)[0]*self.strategy(hands[1],["p"])[0]
+            return self.utility(hands,self.term_list[0])*self.strategy(hands[0],hist)[1]*self.strategy(hands[1],["b"])[0]\
+            	  +self.utility(hands,self.term_list[1])*self.strategy(hands[0],hist)[1]*self.strategy(hands[1],["b"])[1]\
+            	  +self.utility(hands,self.term_list[2])*self.strategy(hands[0],hist)[0]*self.strategy(hands[1],["p"])[1]*self.strategy(hands[0],["p","b"])[0]\
+            	  +self.utility(hands,self.term_list[3])*self.strategy(hands[0],hist)[0]*self.strategy(hands[1],["p"])[1]*self.strategy(hands[0],["p","b"])[1]\
+            	  +self.utility(hands,self.term_list[4])*self.strategy(hands[0],hist)[0]*self.strategy(hands[1],["p"])[0]
         if hist == self.nonterm_list[1]:#b
-            return  self.utility(hands,self.term_list[0])*self.strategy(hands[1],hist)[0]                   +self.utility(hands,self.term_list[1])*self.strategy(hands[1],hist)[1]
+            return self.utility(hands,self.term_list[0])*self.strategy(hands[1],hist)[0]\
+            	  +self.utility(hands,self.term_list[1])*self.strategy(hands[1],hist)[1]
         if hist == self.nonterm_list[2]:#p
-            return  self.utility(hands,self.term_list[2])*self.strategy(hands[1],hist)[1]*self.strategy(hands[0],["p","b"])[0]                   +self.utility(hands,self.term_list[3])*self.strategy(hands[1],hist)[1]*self.strategy(hands[0],["p","b"])[1]                   +self.utility(hands,self.term_list[4])*self.strategy(hands[1],hist)[0]
+            return self.utility(hands,self.term_list[2])*self.strategy(hands[1],hist)[1]*self.strategy(hands[0],["p","b"])[0]\
+        		  +self.utility(hands,self.term_list[3])*self.strategy(hands[1],hist)[1]*self.strategy(hands[0],["p","b"])[1]\
+        		  +self.utility(hands,self.term_list[4])*self.strategy(hands[1],hist)[0]
         if hist == self.nonterm_list[3]:#pb
-            return  self.utility(hands,self.term_list[2])*self.strategy(hands[0],hist)[0]                   +self.utility(hands,self.term_list[3])*self.strategy(hands[0],hist)[1]
+            return self.utility(hands,self.term_list[2])*self.strategy(hands[0],hist)[0]\
+            	  +self.utility(hands,self.term_list[3])*self.strategy(hands[0],hist)[1]
 
     #終点でない各ノードのcounterfactual value
     def cfv(self,hands,hist):
@@ -174,4 +181,3 @@ class KuhnPoker:
         score_ave = score_sum/n_play
         print("累積スコア:",score_sum)
         print("平均スコア:",score_ave)
-
