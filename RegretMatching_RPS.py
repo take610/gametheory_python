@@ -16,8 +16,8 @@ class RockPaperSissors:
                   columns=["Rock","Paper","Scissors"]) #勝ち1点,引き分け0点,負け-1点
 
     def __init__(self):
-        self.strategy_set = np.array([[1,0,0],            #プレイヤー1の混合戦略(Rock,Paper,Scissors)
-                                 [0,0,1]],dtype="float64")#プレイヤー2の混合戦略(Rock,Paper,Scissors)
+        self.strategy_set = np.array([[1,0,0],                 #プレイヤー1の混合戦略(Rock,Paper,Scissors)
+                                      [0,0,1]],dtype="float64")#プレイヤー2の混合戦略(Rock,Paper,Scissors)
 
         self.regret = np.array([[0,0,0],        #プレイヤー1の後悔の値
                                 [0,0,0]])       #プレイヤー2の後悔の値
